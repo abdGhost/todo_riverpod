@@ -48,7 +48,11 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                   Row(
                     children: [
                       GestureDetector(
-                        onTap: null,
+                        onTap: () {
+                          pageController.nextPage(
+                              duration: const Duration(milliseconds: 600),
+                              curve: Curves.easeIn);
+                        },
                         child: Icon(
                           Ionicons.chevron_forward_circle,
                           size: 30,
