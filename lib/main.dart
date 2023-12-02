@@ -22,8 +22,10 @@ class MyApp extends StatelessWidget {
           title: 'Flutter Todo Riverpod',
           theme: ThemeData(
             scaffoldBackgroundColor: AppConst.kBKDark,
+            colorScheme: ColorScheme.fromSeed(seedColor: Colors.purple),
             primarySwatch: Colors.blue,
           ),
+          themeMode: ThemeMode.dark,
           home: child,
         );
       },
