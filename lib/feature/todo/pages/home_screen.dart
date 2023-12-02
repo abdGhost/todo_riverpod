@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:todo_app_riverpod/common/widgets/app_style.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -10,11 +11,15 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
       body: Center(
         child: Text(
-          'Todo with riverpod',
-          style: TextStyle(fontSize: 30),
+          'Flutter Riverpod',
+          style: appStyle(
+            30,
+            Colors.blue,
+            FontWeight.bold,
+          ),
         ),
       ),
     );
