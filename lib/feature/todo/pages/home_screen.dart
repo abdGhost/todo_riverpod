@@ -7,6 +7,7 @@ import 'package:todo_app_riverpod/common/widgets/constant.dart';
 import 'package:todo_app_riverpod/common/widgets/custom_textfield.dart';
 import 'package:todo_app_riverpod/common/widgets/height_spacer.dart';
 import 'package:todo_app_riverpod/common/widgets/reuseable_text.dart';
+import 'package:todo_app_riverpod/common/widgets/width_spacer.dart';
 
 class HomeScreen extends ConsumerStatefulWidget {
   const HomeScreen({super.key});
@@ -15,7 +16,10 @@ class HomeScreen extends ConsumerStatefulWidget {
   ConsumerState<HomeScreen> createState() => _HomeScreenState();
 }
 
-class _HomeScreenState extends ConsumerState<HomeScreen> {
+class _HomeScreenState extends ConsumerState<HomeScreen>
+    with TickerProviderStateMixin {
+  late final TabController tabController =
+      TabController(length: 2, vsync: this);
   final TextEditingController searchController = TextEditingController();
 
   @override
@@ -89,9 +93,68 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
           ),
         ),
       ),
-      body: const Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [],
+      body: SafeArea(
+        child: Padding(
+          padding: EdgeInsets.symmetric(horizontal: 20.w),
+          child: ListView(
+            children: [
+              const HeightSpacer(hieght: 20),
+              Row(
+                children: [
+                  Icon(FontAwesome.tasks, color: AppConst.kLight, size: 20),
+                  const WidthSpacer(wdith: 10),
+                  ReuseableText(
+                    text: 'Today\'s Tasks',
+                    style: appStyle(18, AppConst.kLight, FontWeight.bold),
+                  ),
+                ],
+              ),
+              const HeightSpacer(hieght: 25),
+              Container(
+                decoration: BoxDecoration(
+                  color: AppConst.kLight,
+                  borderRadius: BorderRadius.circular(AppConst.kRadius),
+                ),
+                child: TabBar(
+                  controller: tabController,
+                  indicatorSize: TabBarIndicatorSize.label,
+                  indicator: BoxDecoration(
+                      color: AppConst.kGreyLight,
+                      borderRadius:
+                          BorderRadius.all(Radius.circular(AppConst.kRadius))),
+                  labelPadding: EdgeInsets.zero,
+                  tabs: [
+                    Tab(
+                      child: SizedBox(
+                        width: AppConst.kWidth * 0.5,
+                        child: Center(
+                          child: ReuseableText(
+                            text: 'Completed',
+                            style:
+                                appStyle(18, AppConst.kBKDark, FontWeight.bold),
+                          ),
+                        ),
+                      ),
+                    ),
+                    Tab(
+                      child: Container(
+                        padding: EdgeInsets.only(left: 20.w),
+                        width: AppConst.kWidth * 0.5,
+                        child: Center(
+                          child: ReuseableText(
+                            text: 'Pending',
+                            style:
+                                appStyle(18, AppConst.kBKDark, FontWeight.bold),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              )
+            ],
+          ),
+        ),
       ),
     );
   }
