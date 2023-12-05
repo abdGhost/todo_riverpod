@@ -9,6 +9,7 @@ import 'package:todo_app_riverpod/common/widgets/height_spacer.dart';
 import 'package:todo_app_riverpod/common/widgets/reuseable_text.dart';
 
 import '../../../common/widgets/custom_textfield.dart';
+import 'otp_screen.dart';
 
 class LoginScreen extends ConsumerStatefulWidget {
   const LoginScreen({super.key});
@@ -90,6 +91,12 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
               ),
               const HeightSpacer(hieght: 20),
               CustomOutlineButton(
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const OtpScreen()));
+                },
                 height: AppConst.kHeight * 0.07,
                 width: AppConst.kWidth * 0.9,
                 color: AppConst.kLight,
