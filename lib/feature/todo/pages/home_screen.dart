@@ -9,6 +9,7 @@ import 'package:todo_app_riverpod/common/widgets/height_spacer.dart';
 import 'package:todo_app_riverpod/common/widgets/reuseable_text.dart';
 import 'package:todo_app_riverpod/common/widgets/width_spacer.dart';
 import 'package:todo_app_riverpod/common/widgets/xpansion_tile.dart';
+import 'package:todo_app_riverpod/feature/todo/widgets/todo_tiles.dart';
 
 class HomeScreen extends ConsumerStatefulWidget {
   const HomeScreen({super.key});
@@ -171,6 +172,19 @@ class _HomeScreenState extends ConsumerState<HomeScreen>
                       Container(
                         color: AppConst.kBKLight,
                         height: AppConst.kHeight * 0.3,
+                        child: ListView(
+                          children: [
+                            TodoTiles(
+                              start: '03:00',
+                              end: '10:30',
+                              switcher: Switch(
+                                value: true,
+                                activeColor: Colors.green,
+                                onChanged: (value) {},
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
                       Container(
                         color: AppConst.kGreen,
