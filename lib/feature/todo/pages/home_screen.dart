@@ -8,6 +8,7 @@ import 'package:todo_app_riverpod/common/widgets/custom_textfield.dart';
 import 'package:todo_app_riverpod/common/widgets/height_spacer.dart';
 import 'package:todo_app_riverpod/common/widgets/reuseable_text.dart';
 import 'package:todo_app_riverpod/common/widgets/width_spacer.dart';
+import 'package:todo_app_riverpod/common/widgets/xpansion_tile.dart';
 
 class HomeScreen extends ConsumerStatefulWidget {
   const HomeScreen({super.key});
@@ -123,13 +124,18 @@ class _HomeScreenState extends ConsumerState<HomeScreen>
                       borderRadius:
                           BorderRadius.all(Radius.circular(AppConst.kRadius))),
                   labelPadding: EdgeInsets.zero,
+                  labelColor: AppConst.kBlueLight,
+                  isScrollable: false,
+                  labelStyle:
+                      appStyle(16, AppConst.kBlueLight, FontWeight.w700),
+                  unselectedLabelColor: AppConst.kLight,
                   tabs: [
                     Tab(
                       child: SizedBox(
                         width: AppConst.kWidth * 0.5,
                         child: Center(
                           child: ReuseableText(
-                            text: 'Completed',
+                            text: 'Pending',
                             style:
                                 appStyle(18, AppConst.kBKDark, FontWeight.bold),
                           ),
@@ -142,7 +148,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen>
                         width: AppConst.kWidth * 0.5,
                         child: Center(
                           child: ReuseableText(
-                            text: 'Pending',
+                            text: 'Completed',
                             style:
                                 appStyle(18, AppConst.kBKDark, FontWeight.bold),
                           ),
@@ -151,7 +157,44 @@ class _HomeScreenState extends ConsumerState<HomeScreen>
                     ),
                   ],
                 ),
-              )
+              ),
+              const HeightSpacer(hieght: 20),
+              SizedBox(
+                height: AppConst.kHeight * 0.3,
+                width: AppConst.kWidth,
+                child: ClipRRect(
+                  borderRadius:
+                      BorderRadius.all(Radius.circular(AppConst.kRadius)),
+                  child: TabBarView(
+                    controller: tabController,
+                    children: [
+                      Container(
+                        color: AppConst.kBKLight,
+                        height: AppConst.kHeight * 0.3,
+                      ),
+                      Container(
+                        color: AppConst.kGreen,
+                        height: AppConst.kHeight * 0.3,
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              const HeightSpacer(hieght: 10),
+              const XpansionTile(
+                text: 'Tomorrow\'s task',
+                text2: 'Tomorrow tasks are shown here',
+                children: [],
+              ),
+              const HeightSpacer(hieght: 10),
+              XpansionTile(
+                text: DateTime.now()
+                    .add(const Duration(days: 2))
+                    .toString()
+                    .substring(5, 10),
+                text2: 'Tomorrow tasks are shown here',
+                children: [],
+              ),
             ],
           ),
         ),
