@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:todo_app_riverpod/common/widgets/constant.dart';
 import 'package:todo_app_riverpod/feature/onboarding/pages/onboarding_screen.dart';
+import 'package:todo_app_riverpod/feature/todo/pages/home_screen.dart';
 
 void main() {
   runApp(const ProviderScope(child: MyApp()));
@@ -25,11 +26,11 @@ class MyApp extends StatelessWidget {
             colorScheme: ColorScheme.fromSeed(seedColor: Colors.purple),
             primarySwatch: Colors.blue,
           ),
-          // themeMode: ThemeMode.dark,
+          themeMode: ThemeMode.dark,
           home: child,
         );
       },
-      child: const OnboardingScreen(),
+      child: const HomeScreen(),
     );
   }
 }
