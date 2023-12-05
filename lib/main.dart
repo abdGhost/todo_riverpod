@@ -25,7 +25,7 @@ class MyApp extends StatelessWidget {
             colorScheme: ColorScheme.fromSeed(seedColor: Colors.purple),
             primarySwatch: Colors.blue,
           ),
-          themeMode: ThemeMode.dark,
+          // themeMode: ThemeMode.dark,
           home: child,
         );
       },
