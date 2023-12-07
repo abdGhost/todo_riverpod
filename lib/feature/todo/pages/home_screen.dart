@@ -206,11 +206,11 @@ class _HomeScreenState extends ConsumerState<HomeScreen>
                   ref
                       .read(xpansionStateProvider.notifier)
                       .setStart(!isExpanded);
-                  print(isExpanded);
+                  debugPrint(isExpanded.toString());
                 },
                 trailing: Padding(
                   padding: const EdgeInsets.only(right: 12),
-                  child: ref.watch(xpansionStateProvider)
+                  child: ref.watch(xpansionStateProvider) == false
                       ? Icon(
                           AntDesign.circledown,
                           color: AppConst.kLight,

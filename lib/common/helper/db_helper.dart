@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:sqflite/sqflite.dart' as sql;
 import 'package:todo_app_riverpod/common/models/task_model.dart';
 
@@ -52,9 +53,48 @@ class DBHelper {
     return db.query("todos", orderBy: "id");
   }
 
-// Method to get single todo item
+  //Method to get single todo item
   static Future<List<Map<String, dynamic>>> getItem(int id) async {
     final db = await DBHelper.db();
     return db.query("todos", where: "id =?", whereArgs: [id], limit: 1);
+  }
+
+  //Method to update todo item
+  static Future<int> updateItem(
+    int id,
+    String title,
+    String desc,
+    int isCompleted,
+    String date,
+    String startTime,
+    String endTime,
+  ) async {
+    final db = await DBHelper.db();
+
+    final data = {
+      'title': title,
+      'desc': desc,
+      'isCompleted': isCompleted,
+      'date': date,
+      'startTime': startTime,
+      'endTime': endTime,
+    };
+    final result =
+        await db.update('todos', data, where: "id = ?", whereArgs: [1]);
+    return result;
+  }
+
+  //Method to delete one todo item
+  static Future<void> deleteItem(int id) async {
+    try {
+      final db = await DBHelper.db();
+      db.delete(
+        'todos',
+        where: "id =?",
+        whereArgs: [1],
+      );
+    } catch (e) {
+      debugPrint(e.toString());
+    }
   }
 }

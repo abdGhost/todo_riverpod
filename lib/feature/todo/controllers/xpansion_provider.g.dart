@@ -6,7 +6,7 @@ part of 'xpansion_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$xpansionStateHash() => r'8fd5c203568134a807f307e59faec68cf4652f03';
+String _$xpansionStateHash() => r'2f1f06e634b0386a184f8fce468c805b1a978e62';
 
 /// See also [XpansionState].
 @ProviderFor(XpansionState)
@@ -22,7 +22,7 @@ final xpansionStateProvider =
 );
 
 typedef _$XpansionState = AutoDisposeNotifier<bool>;
-String _$xpansionState0Hash() => r'6ee5acdb88a2025ae2b2c36fb6fb05976e47e523';
+String _$xpansionState0Hash() => r'2f7e717bc5a47b9f0bbbaddb04965ef58c51655e';
 
 /// See also [XpansionState0].
 @ProviderFor(XpansionState0)
