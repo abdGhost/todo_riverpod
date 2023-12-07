@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_vector_icons/flutter_vector_icons.dart';
@@ -10,6 +12,8 @@ import 'package:todo_app_riverpod/common/widgets/reuseable_text.dart';
 import 'package:todo_app_riverpod/common/widgets/width_spacer.dart';
 import 'package:todo_app_riverpod/common/widgets/xpansion_tile.dart';
 import 'package:todo_app_riverpod/feature/todo/widgets/todo_tiles.dart';
+
+import '../controllers/xpansion_provider.dart';
 
 class HomeScreen extends ConsumerStatefulWidget {
   const HomeScreen({super.key});
@@ -195,10 +199,38 @@ class _HomeScreenState extends ConsumerState<HomeScreen>
                 ),
               ),
               const HeightSpacer(hieght: 10),
-              const XpansionTile(
+              XpansionTile(
                 text: 'Tomorrow\'s task',
                 text2: 'Tomorrow tasks are shown here',
-                children: [],
+                onExpansionChange: (bool isExpanded) {
+                  ref
+                      .read(xpansionStateProvider.notifier)
+                      .setStart(!isExpanded);
+                  print(isExpanded);
+                },
+                trailing: Padding(
+                  padding: const EdgeInsets.only(right: 12),
+                  child: ref.watch(xpansionStateProvider)
+                      ? Icon(
+                          AntDesign.circledown,
+                          color: AppConst.kLight,
+                        )
+                      : Icon(
+                          AntDesign.closecircleo,
+                          color: AppConst.kBlueLight,
+                        ),
+                ),
+                children: [
+                  TodoTiles(
+                    start: '03:00',
+                    end: '10:30',
+                    switcher: Switch(
+                      value: true,
+                      activeColor: Colors.green,
+                      onChanged: (value) {},
+                    ),
+                  ),
+                ],
               ),
               const HeightSpacer(hieght: 10),
               XpansionTile(
@@ -207,7 +239,35 @@ class _HomeScreenState extends ConsumerState<HomeScreen>
                     .toString()
                     .substring(5, 10),
                 text2: 'Tomorrow tasks are shown here',
-                children: [],
+                onExpansionChange: (bool isExpanded) {
+                  ref
+                      .read(xpansionState0Provider.notifier)
+                      .setStart(!isExpanded);
+                  print(isExpanded);
+                },
+                trailing: Padding(
+                  padding: const EdgeInsets.only(right: 12),
+                  child: ref.watch(xpansionState0Provider)
+                      ? Icon(
+                          AntDesign.circledown,
+                          color: AppConst.kLight,
+                        )
+                      : Icon(
+                          AntDesign.closecircleo,
+                          color: AppConst.kBlueLight,
+                        ),
+                ),
+                children: [
+                  TodoTiles(
+                    start: '03:00',
+                    end: '10:30',
+                    switcher: Switch(
+                      value: true,
+                      activeColor: Colors.green,
+                      onChanged: (value) {},
+                    ),
+                  ),
+                ],
               ),
             ],
           ),

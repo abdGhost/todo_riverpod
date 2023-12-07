@@ -5,7 +5,7 @@ import '../widgets/titles.dart';
 class XpansionTile extends StatelessWidget {
   final String text;
   final String text2;
-  final void Function()? onExpansionChange;
+  final void Function(bool)? onExpansionChange;
   final Widget? trailing;
   final List<Widget>? children;
   const XpansionTile({

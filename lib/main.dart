@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:todo_app_riverpod/common/widgets/constant.dart';
-import 'package:todo_app_riverpod/feature/auth/pages/test_provider.dart';
 import 'package:todo_app_riverpod/feature/todo/pages/home_screen.dart';
 
 void main() {
@@ -30,7 +29,7 @@ class MyApp extends StatelessWidget {
           home: child,
         );
       },
-      child: const TestProvider(),
+      child: const HomeScreen(),
     );
   }
 }
